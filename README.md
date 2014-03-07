@@ -33,7 +33,7 @@ The code for the API is simple. `GeoPattern.Patterns.Pattern` is the abstract ba
 And `GeoPattern.GeoPatterns` is the factory for instantiating those pattern generators:
 
 ```csharp
-var image = GeoPatterns.Generate("GitHub").UriImage();
+var image = GeoPatterns.Generate("GitHub", "triangles_rotated").UriImage();
 File.WriteAllText("GeoPattern.html", "<!DOCTYPE html><html><title></title></head><body style='background: " + image + "'></body></html>");
 ```
 

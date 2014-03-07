@@ -1,5 +1,6 @@
-﻿namespace GeoPattern
+﻿namespace GeoPatternTests
 {
+    using GeoPattern;
     using System.IO;
 
     class Program

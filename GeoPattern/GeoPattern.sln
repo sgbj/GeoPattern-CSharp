@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoPattern", "GeoPattern\GeoPattern.csproj", "{D724E795-A88B-4DA7-93A6-FD49BFBD1D17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoPatternTests", "GeoPatternTests\GeoPatternTests.csproj", "{34B8341C-7034-4E9F-9CF5-2FD09441CB85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{D724E795-A88B-4DA7-93A6-FD49BFBD1D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D724E795-A88B-4DA7-93A6-FD49BFBD1D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D724E795-A88B-4DA7-93A6-FD49BFBD1D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B8341C-7034-4E9F-9CF5-2FD09441CB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B8341C-7034-4E9F-9CF5-2FD09441CB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B8341C-7034-4E9F-9CF5-2FD09441CB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B8341C-7034-4E9F-9CF5-2FD09441CB85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

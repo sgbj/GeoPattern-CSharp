@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Geopattern-csharp by sgbj</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/sgbj/GeoPattern-CSharp">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/sgbj/GeoPattern-CSharp/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/sgbj/GeoPattern-CSharp/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Geopattern-csharp</h1>
+          <p>A C# port of Jason Long&#39;s GeoPattern</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/sgbj">sgbj</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="geopattern-c" class="anchor" href="#geopattern-c"><span class="octicon octicon-link"></span></a>GeoPattern C#</h1>
+
+<p><em>This is a C# port of <a href="https://github.com/jasonlong/geo_pattern">Jason Long's GeoPattern</a>:</em></p>
+
+<blockquote>
+<p>Generate beautiful tiling SVG patterns from a string. The string is converted into a SHA and a color and pattern are determined based on the values in the hash. The color is determined by shifting the hue and saturation from a default (or passed in) base color. One of 16 patterns is used (or you can specify one) and the sizing of the pattern elements is also determined by the hash values.</p>
+
+<p>You can use the generated pattern as the <code>background-image</code> for a container. Using the <code>base64</code> representation of the pattern still results in SVG rendering, so it looks great on retina displays.</p>
+
+<p>See the <a href="http://guides.github.com">GitHub Guides</a> site as an example of this library in action.</p>
+</blockquote>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>The code for the API is simple. <code>GeoPattern.Patterns.Pattern</code> is the abstract base class for all pattern generators, and it has the following child classes:</p>
+
+<ul>
+<li>
+<strong>OctagonsPattern:</strong> <em>octagons</em>
+</li>
+<li>
+<strong>OverlappingCirclesPattern:</strong> <em>overlapping_circles</em>
+</li>
+<li>
+<strong>PlusSignsPattern:</strong> <em>plus_signs</em>
+</li>
+<li>
+<strong>XesPattern:</strong> <em>xes</em>
+</li>
+<li>
+<strong>SineWavesPattern:</strong> <em>sine_waves</em>
+</li>
+<li>
+<strong>HexagonsPattern:</strong> <em>hexagons</em>
+</li>
+<li>
+<strong>OverlappingRingsPattern:</strong> <em>overlapping_rings</em>
+</li>
+<li>
+<strong>PlaidPattern:</strong> <em>plaid</em>
+</li>
+<li>
+<strong>TrianglesPattern:</strong> <em>triangles</em>
+</li>
+<li>
+<strong>SquaresPattern:</strong> <em>squares</em>
+</li>
+<li>
+<strong>ConcentricCirclesPattern:</strong> <em>concentric_circles</em>
+</li>
+<li>
+<strong>DiamondsPattern:</strong> <em>diamonds</em>
+</li>
+<li>
+<strong>TessellationPattern:</strong> <em>tessellation</em>
+</li>
+<li>
+<strong>NestedSquaresPattern:</strong> <em>nested_squares</em>
+</li>
+<li>
+<strong>MosaicSquaresPattern:</strong> <em>mosaic_squares</em>
+</li>
+<li>
+<strong>TrianglesRotatedPattern:</strong> <em>triangles_rotated</em>
+</li>
+<li>
+<strong>ChevronsPattern:</strong> <em>chevrons</em>
+</li>
+</ul><p>And <code>GeoPattern.GeoPatterns</code> is the factory for instantiating those pattern generators:</p>
+
+<div class="highlight highlight-csharp"><pre><span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GeoPatterns</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="s">"triangles_rotated"</span><span class="p">).</span><span class="n">UriImage</span><span class="p">();</span>
+<span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="s">"GeoPattern.html"</span><span class="p">,</span> <span class="s">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body style='background: "</span> <span class="p">+</span> <span class="n">image</span> <span class="p">+</span> <span class="s">"'&gt;&lt;/body&gt;&lt;/html&gt;"</span><span class="p">);</span>
+</pre></div>
+
+<p>Loop through all available pattern generators and generate a data URI for each one:</p>
+
+<div class="highlight highlight-csharp"><pre><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">patternName</span> <span class="k">in</span> <span class="n">GeoPatterns</span><span class="p">.</span><span class="n">PatternNames</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GeoPatterns</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">,</span> <span class="n">patternName</span><span class="p">);</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Change the available options:</p>
+
+<div class="highlight highlight-csharp"><pre><span class="n">GeoPatterns</span><span class="p">.</span><span class="n">Options</span><span class="p">(</span><span class="n">baseColor</span><span class="p">:</span> <span class="s">"#2244aa"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GeoPatterns</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="s">"GitHub"</span><span class="p">).</span><span class="n">UriImage</span><span class="p">();</span>
+<span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="s">"GeoPattern.html"</span><span class="p">,</span> <span class="s">"&lt;!doctype html&gt;&lt;html&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body style='background: "</span> <span class="p">+</span> <span class="n">image</span> <span class="p">+</span> <span class="s">"'&gt;&lt;/body&gt;&lt;/html&gt;"</span><span class="p">);</span>
+</pre></div>
+
+<p>Results in:</p>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/geopattern.png" alt="geopattern example"></p>
+
+<p>And register your own custom pattern generators with the API:</p>
+
+<div class="highlight highlight-csharp"><pre><span class="n">GeoPatterns</span><span class="p">.</span><span class="n">Register</span><span class="p">&lt;</span><span class="n">MyCustomPattern</span><span class="p">&gt;(</span><span class="s">"my_custom_pattern"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GeoPatterns</span><span class="p">(</span><span class="s">"My Name"</span><span class="p">,</span> <span class="s">"my_custom_pattern"</span><span class="p">).</span><span class="n">UriImage</span><span class="p">();</span>
+<span class="c1">// ...</span>
+</pre></div>
+
+<h2>
+<a name="available-patterns" class="anchor" href="#available-patterns"><span class="octicon octicon-link"></span></a>Available patterns</h2>
+
+<h3>
+<a name="octagons" class="anchor" href="#octagons"><span class="octicon octicon-link"></span></a>octagons</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/octagons.png" alt="octagons example"></p>
+
+<h3>
+<a name="overlapping_circles" class="anchor" href="#overlapping_circles"><span class="octicon octicon-link"></span></a>overlapping_circles</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/overlapping_circles.png" alt="overlapping_circles example"></p>
+
+<h3>
+<a name="plus_signs" class="anchor" href="#plus_signs"><span class="octicon octicon-link"></span></a>plus_signs</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/plus_signs.png" alt="plus_signs example"></p>
+
+<h3>
+<a name="xes" class="anchor" href="#xes"><span class="octicon octicon-link"></span></a>xes</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/xes.png" alt="xes example"></p>
+
+<h3>
+<a name="sine_waves" class="anchor" href="#sine_waves"><span class="octicon octicon-link"></span></a>sine_waves</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/sine_waves.png" alt="sine_waves example"></p>
+
+<h3>
+<a name="hexagons" class="anchor" href="#hexagons"><span class="octicon octicon-link"></span></a>hexagons</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/hexagons.png" alt="hexagons example"></p>
+
+<h3>
+<a name="overlapping_rings" class="anchor" href="#overlapping_rings"><span class="octicon octicon-link"></span></a>overlapping_rings</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/overlapping_rings.png" alt="overlapping_rings example"></p>
+
+<h3>
+<a name="plaid" class="anchor" href="#plaid"><span class="octicon octicon-link"></span></a>plaid</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/plaid.png" alt="plaid example"></p>
+
+<h3>
+<a name="triangles" class="anchor" href="#triangles"><span class="octicon octicon-link"></span></a>triangles</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/triangles.png" alt="triangles example"></p>
+
+<h3>
+<a name="squares" class="anchor" href="#squares"><span class="octicon octicon-link"></span></a>squares</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/squares.png" alt="squares example"></p>
+
+<h3>
+<a name="concentric_circles" class="anchor" href="#concentric_circles"><span class="octicon octicon-link"></span></a>concentric_circles</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/concentric_circles.png" alt="concentric_circles example"></p>
+
+<h3>
+<a name="diamonds" class="anchor" href="#diamonds"><span class="octicon octicon-link"></span></a>diamonds</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/diamonds.png" alt="diamonds example"></p>
+
+<h3>
+<a name="tessellation" class="anchor" href="#tessellation"><span class="octicon octicon-link"></span></a>tessellation</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/tessellation.png" alt="tessellation example"></p>
+
+<h3>
+<a name="nested_squares" class="anchor" href="#nested_squares"><span class="octicon octicon-link"></span></a>nested_squares</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/nested_squares.png" alt="nested_squares example"></p>
+
+<h3>
+<a name="mosaic_squares" class="anchor" href="#mosaic_squares"><span class="octicon octicon-link"></span></a>mosaic_squares</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/mosaic_squares.png" alt="mosaic_squares example"></p>
+
+<h3>
+<a name="triangles_rotated" class="anchor" href="#triangles_rotated"><span class="octicon octicon-link"></span></a>triangles_rotated</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/triangles_rotated.png" alt="triangles_rotated example"></p>
+
+<h3>
+<a name="chevrons" class="anchor" href="#chevrons"><span class="octicon octicon-link"></span></a>chevrons</h3>
+
+<p><img src="https://raw.github.com/sgbj/GeoPattern/master/examples/chevrons.png" alt="chevrons example"></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

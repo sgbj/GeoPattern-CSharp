@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -12,26 +13,30 @@ namespace GeoPattern
     {
         static void Main(string[] args)
         {
-            Pattern p = new Pattern("scott batary", new Dictionary<string, object>
-            {
-                //{ "base_color", "#003300" },
-                { "generator", "tessellation" }
-            });
-            File.WriteAllText("image.html", 
-                @"<!doctype html>
+            var s =
+@"<!doctype html>
 <html>
 <head>
-<title>Test</title>
-<style>
-body {
-	background: " + p.UriImage() +
-@"}
-</style>
+<title></title>
 </head>
-<body>
-</body>
-</html>");
-            Console.WriteLine(p.UriImage());
+<body>";
+            var rng = new Random();
+
+            foreach (var generator in Pattern.Generators.Keys)
+            {
+                var c = Color.FromArgb((int)((uint)rng.Next(0xFFFFFF) | 0xFF000000));
+                var image = Pattern.Generator("GeoPattern", generator,
+                    new Dictionary<string, object> { { "base_color", ColorTranslator.ToHtml(c) } })
+                    .GeneratePattern().UriImage();
+                s += "<h2>" + generator + "</h2>";
+                s += "<div style='height: 200px; margin-bottom: 50px; background: " + image + ";'></div>";
+            }
+
+            s +=
+@"</body>
+</html>";
+
+            File.WriteAllText("geopattern.html", s);
         }
     }
 }

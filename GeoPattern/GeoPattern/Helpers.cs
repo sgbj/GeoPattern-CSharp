@@ -41,5 +41,15 @@ namespace GeoPattern
         {
             return Convert.ToBase64String(UTF8Encoding.UTF8.GetBytes(s));
         }
+
+        public static double MapTo(this int value, double vMin, double vMax, double dMin, double dMax)
+        {
+            return MapTo((double)value, vMin, vMax, dMin, dMax);
+        }
+
+        public static double MapTo(this double value, double vMin, double vMax, double dMin, double dMax)
+        {
+            return (value - vMin) * (dMax - dMin) / (vMax - vMin) + dMin;
+        }
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-
-namespace GeoPattern
+﻿namespace GeoPattern
 {
+    using System;
+    using System.Drawing;
+
     // Courtesy of http://richnewman.wordpress.com/about/code-listings-and-diagrams/hslcolor-class/
-    public class HSLColor
+    internal class HSLColor
     {
         // Private data members below are on scale 0-1
         // They are scaled for use externally based on scale

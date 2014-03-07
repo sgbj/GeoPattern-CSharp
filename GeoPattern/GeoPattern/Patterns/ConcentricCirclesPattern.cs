@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class ConcentricCirclesGenerator : PatternGenerator
-    {
-        public ConcentricCirclesGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class ConcentricCirclesPattern : Pattern
+    {
+
+        protected override void GeneratePattern()
         {
             var scale = HexVal(0, 1);
             var ring_size = scale.MapTo(0, 15, 10, 60);

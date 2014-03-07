@@ -1,35 +1,23 @@
-﻿using GeoPattern.Generators;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public abstract class PatternGenerator
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Globalization;
+
+    public abstract class Pattern
     {
-        protected Dictionary<string, object> Options;
-        protected string Hash;
-        protected Svg Svg;
+        internal Dictionary<string, object> Options;
+        internal string Hash;
+        internal Svg Svg;
 
-        public PatternGenerator(string str, Dictionary<string, object> options)
-        {
-            Options = options;
-            Hash = str.Sha1HexDigest();
-            Svg = new Svg();
-        }
-
-        public PatternGenerator GeneratePattern()
+        public Pattern Generate()
         {
             GenerateBackground();
-            Generate();
+            GeneratePattern();
             return this;
         }
 
-        protected abstract void Generate();
+        protected abstract void GeneratePattern();
 
         protected void GenerateBackground()
         {
@@ -83,7 +71,7 @@ namespace GeoPattern.Generators
             return string.Format("url(data:image/svg+xml;base64,{0});", Base64String());
         }
 
-        public string DataUriImage()
+        public string UriData()
         {
             return string.Format("data:image/svg+xml;base64,{0}", Base64String());
         }

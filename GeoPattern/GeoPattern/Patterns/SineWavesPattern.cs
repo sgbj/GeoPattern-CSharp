@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class SineWavesGenerator : PatternGenerator
-    {
-        public SineWavesGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System;
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class SineWavesPattern : Pattern
+    {
+
+        protected override void GeneratePattern()
         {
             var period = Math.Floor(HexVal(0, 1).MapTo(0, 15, 100, 400));
             var amplitude = Math.Floor(HexVal(1, 1).MapTo(0, 15, 30, 100));

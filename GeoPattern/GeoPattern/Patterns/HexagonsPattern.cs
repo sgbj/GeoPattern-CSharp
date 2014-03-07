@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class HexagonsGenerator : PatternGenerator
-    {
-        public HexagonsGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System;
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class HexagonsPattern : Pattern
+    {
+        
+        protected override void GeneratePattern()
         {
             var scale = HexVal(0, 1);
             var sideLength = scale.MapTo(0, 15, 8, 60);

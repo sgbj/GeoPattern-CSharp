@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Text;
-
-namespace GeoPattern
+﻿namespace GeoPattern
 {
+    using System.Collections.Generic;
+    using System.Text;
+
     public class Svg
     {
         public object Width { get; set; }

@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeoPattern.Generators
+namespace GeoPattern.Patterns
 {
-    public class SquaresGenerator : PatternGenerator
+    public class SquaresPattern : Pattern
     {
-        public SquaresGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
 
-        protected override void Generate()
+        protected override void GeneratePattern()
         {
             var square_size = HexVal(0, 1).MapTo(0, 15, 10, 60);
 

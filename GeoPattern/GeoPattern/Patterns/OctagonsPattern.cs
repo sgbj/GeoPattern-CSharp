@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class OctagonsGenerator : PatternGenerator
-    {
-        public OctagonsGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class OctagonsPattern : Pattern
+    {
+
+        protected override void GeneratePattern()
         {
             var square_size = HexVal(0, 1).MapTo(0, 15, 10, 60);
             var tile = BuildOctagonShape(square_size);

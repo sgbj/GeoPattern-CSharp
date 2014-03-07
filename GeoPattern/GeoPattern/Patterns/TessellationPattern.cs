@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class TessellationGenerator : PatternGenerator
-    {
-        public TessellationGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System;
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class TessellationPattern : Pattern
+    {
+
+        protected override void GeneratePattern()
         {
             // 3.4.6.4 semi-regular tessellation
             var side_length = HexVal(0, 1).MapTo(0, 15, 5, 40);

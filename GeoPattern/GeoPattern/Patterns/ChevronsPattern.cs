@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class ChevronsGenerator : PatternGenerator
-    {
-        public ChevronsGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class ChevronsPattern : Pattern
+    {
+
+        protected override void GeneratePattern()
         {
             var chevron_width = HexVal(0, 1).MapTo(0, 15, 30, 80);
             var chevron_height = HexVal(0, 1).MapTo(0, 15, 30, 80);

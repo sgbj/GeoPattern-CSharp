@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class PlaidGenerator : PatternGenerator
-    {
-        public PlaidGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class PlaidPattern : Pattern
+    {
+
+        protected override void GeneratePattern()
         {
             var height = 0.0;
             var width = 0.0;

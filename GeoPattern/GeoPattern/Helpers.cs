@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern
+﻿namespace GeoPattern
 {
-    public static class Helpers
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Cryptography;
+    using System.Text;
+
+    internal static class Helpers
     {
         public static string Sha1HexDigest(this string s)
         {
             using (var sha1 = new SHA1CryptoServiceProvider())
+            {
                 return BitConverter.ToString(sha1.ComputeHash(UTF8Encoding.UTF8.GetBytes(s))).Replace("-", "").ToLower();
+            }
         }
 
         public static Dictionary<K, V> Merge<K, V>(this Dictionary<K, V> a, Dictionary<K, V> b)

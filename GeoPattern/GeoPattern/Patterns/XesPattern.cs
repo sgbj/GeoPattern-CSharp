@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoPattern.Generators
+﻿namespace GeoPattern.Patterns
 {
-    public class XesGenerator : PatternGenerator
-    {
-        public XesGenerator(string str, Dictionary<string, object> options) : base(str, options)
-        {
-        }
+    using System.Collections.Generic;
 
-        protected override void Generate()
+    public class XesPattern : Pattern
+    {
+
+        protected override void GeneratePattern()
         {
             var square_size = HexVal(0, 1).MapTo(0, 15, 10, 25);
             var x_size = square_size * 3 * 0.943;

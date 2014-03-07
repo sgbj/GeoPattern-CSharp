@@ -10,32 +10,54 @@
 
 ##Usage
 
-The code for the API is simple. `GeoPattern.Generators.PatternGenerator` is the abstract base class for all pattern generators, which has the following child classes:
+The code for the API is simple. `GeoPattern.Patterns.Pattern` is the abstract base class for all pattern generators, and it has the following child classes:
 
-* OctagonsGenerator
-* OverlappingCirclesGenerator
-* PlusSignsGenerator
-* XesGenerator
-* SineWavesGenerator
-* HexagonsGenerator
-* OverlappingRingsGenerator
-* PlaidGenerator
-* TrianglesGenerator
-* SquaresGenerator
-* ConcentricCirclesGenerator
-* DiamondsGenerator
-* TessellationGenerator
-* NestedSquaresGenerator
-* MosaicSquaresGenerator
-* TrianglesRotatedGenerator
-* ChevronsGenerator
++ **OctagonsPattern:** *octagons*
++ **OverlappingCirclesPattern:** *overlapping_circles*
++ **PlusSignsPattern:** *plus_signs*
++ **XesPattern:** *xes*
++ **SineWavesPattern:** *sine_waves*
++ **HexagonsPattern:** *hexagons*
++ **OverlappingRingsPattern:** *overlapping_rings*
++ **PlaidPattern:** *plaid*
++ **TrianglesPattern:** *triangles*
++ **SquaresPattern:** *squares*
++ **ConcentricCirclesPattern:** *concentric_circles*
++ **DiamondsPattern:** *diamonds*
++ **TessellationPattern:** *tessellation*
++ **NestedSquaresPattern:** *nested_squares*
++ **MosaicSquaresPattern:** *mosaic_squares*
++ **TrianglesRotatedPattern:** *triangles_rotated*
++ **ChevronsPattern:** *chevrons*
 
-And `GeoPattern.Pattern` is the factory for instantiating those generators:
+And `GeoPattern.GeoPatterns` is the factory for instantiating those pattern generators:
 
 ```csharp
-var data = Pattern.Generator("GeoPattern").GeneratePattern().UriImage();
-File.WriteAllText("uridata.txt", data);
+var image = GeoPatterns.Generate("GitHub").UriImage();
+File.WriteAllText("GeoPattern.html", "<!DOCTYPE html><html><title></title></head><body style='background: " + image + "'></body></html>");
 ```
+
+Loop through all available pattern generators and generate a data URI for each one:
+
+```csharp
+foreach (var patternName in GeoPatterns.PatternNames())
+{
+    var image = GeoPatterns.Generate("GitHub", patternName);
+    // ...
+}
+```
+
+Change the available options:
+
+```csharp
+GeoPatterns.Options(baseColor: "#2244aa");
+var image = GeoPatterns.Generate("GitHub").UriImage();
+File.WriteAllText("GeoPattern.html", "<!doctype html><html><title></title></head><body style='background: " + image + "'></body></html>");
+```
+
+Results in:
+
+![geopattern example](https://raw.github.com/sgbj/GeoPattern/master/examples/geopattern.png)
 
 ##Available patterns
 

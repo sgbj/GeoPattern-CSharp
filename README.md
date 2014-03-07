@@ -1,5 +1,92 @@
 # GeoPattern
 
-Generate beautiful tiling SVG patterns from a string. The string is converted into a SHA and a color and pattern are determined based on the values in the hash. The color is determined by shifting the hue and saturation from a default (or passed in) base color. One of 16 patterns is used (or you can specify one) and the sizing of the pattern elements is also determined by the hash values.
+*This is a C# port of [Jason Long's GeoPattern](https://github.com/jasonlong/geo_pattern):*
 
-**This is a C# port of [Jason Long's GeoPattern](https://github.com/jasonlong/geo_pattern).**
+>Generate beautiful tiling SVG patterns from a string. The string is converted into a SHA and a color and pattern are >determined based on the values in the hash. The color is determined by shifting the hue and saturation from a default >(or passed in) base color. One of 16 patterns is used (or you can specify one) and the sizing of the pattern elements >is also determined by the hash values.
+
+>You can use the generated pattern as the `background-image` for a container. Using the `base64` representation of the >pattern still results in SVG rendering, so it looks great on retina displays.
+
+>See the [GitHub Guides](http://guides.github.com) site as an example of this library in action.
+
+##Usage
+
+The code for the API is simple. `GeoPattern.Generators.PatternGenerator` is the abstract base class for all pattern generators, which has the following child classes:
+
+* OctagonsGenerator
+* OverlappingCirclesGenerator
+* PlusSignsGenerator
+* XesGenerator
+* SineWavesGenerator
+* HexagonsGenerator
+* OverlappingRingsGenerator
+* PlaidGenerator
+* TrianglesGenerator
+* SquaresGenerator
+* ConcentricCirclesGenerator
+* DiamondsGenerator
+* TessellationGenerator
+* NestedSquaresGenerator
+* MosaicSquaresGenerator
+* TrianglesRotatedGenerator
+* ChevronsGenerator
+
+And `GeoPattern.Pattern` is the factory for instantiating those generators:
+
+```csharp
+var data = Pattern.Generator("GeoPattern").GeneratePattern().UriImage();
+File.WriteAllText("uridata.txt", data);
+```
+
+##Available patterns
+
+###octagons
+![octagons example](https://raw.github.com/sgbj/GeoPattern/master/examples/octagons.png)
+
+###overlapping_circles
+![overlapping_circles example](https://raw.github.com/sgbj/GeoPattern/master/examples/overlapping_circles.png)
+
+###plus_signs
+![plus_signs example](https://raw.github.com/sgbj/GeoPattern/master/examples/plus_signs.png)
+
+###xes
+![xes example](https://raw.github.com/sgbj/GeoPattern/master/examples/xes.png)
+
+###sine_waves
+![sine_waves example](https://raw.github.com/sgbj/GeoPattern/master/examples/sine_waves.png)
+
+###hexagons
+![hexagons example](https://raw.github.com/sgbj/GeoPattern/master/examples/hexagons.png)
+
+###overlapping_rings
+![overlapping_rings example](https://raw.github.com/sgbj/GeoPattern/master/examples/overlapping_rings.png)
+
+###plaid
+![plaid example](https://raw.github.com/sgbj/GeoPattern/master/examples/plaid.png)
+
+###triangles
+![triangles example](https://raw.github.com/sgbj/GeoPattern/master/examples/triangles.png)
+
+###squares
+![squares example](https://raw.github.com/sgbj/GeoPattern/master/examples/squares.png)
+
+###concentric_circles
+![concentric_circles example](https://raw.github.com/sgbj/GeoPattern/master/examples/concentric_circles.png)
+
+###diamonds
+![diamonds example](https://raw.github.com/sgbj/GeoPattern/master/examples/diamonds.png)
+
+###tessellation
+![tessellation example](https://raw.github.com/sgbj/GeoPattern/master/examples/tessellation.png)
+
+###nested_squares
+![nested_squares example](https://raw.github.com/sgbj/GeoPattern/master/examples/nested_squares.png)
+
+###mosaic_squares
+![mosaic_squares example](https://raw.github.com/sgbj/GeoPattern/master/examples/mosaic_squares.png)
+
+###triangles_rotated
+![triangles_rotated example](https://raw.github.com/sgbj/GeoPattern/master/examples/triangles_rotated.png)
+
+###chevrons
+![chevrons example](https://raw.github.com/sgbj/GeoPattern/master/examples/chevrons.png)
+

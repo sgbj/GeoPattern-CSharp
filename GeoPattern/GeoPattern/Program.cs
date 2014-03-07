@@ -15,7 +15,7 @@ namespace GeoPattern
             Pattern p = new Pattern("scott batary", new Dictionary<string, object>
             {
                 //{ "base_color", "#003300" },
-                { "generator", "mosaic_squares" }
+                { "generator", "tessellation" }
             });
             File.WriteAllText("image.html", 
                 @"<!doctype html>

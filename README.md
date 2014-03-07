@@ -1,4 +1,4 @@
-# GeoPattern
+# GeoPattern C# #
 
 *This is a C# port of [Jason Long's GeoPattern](https://github.com/jasonlong/geo_pattern):*
 

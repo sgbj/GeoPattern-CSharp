@@ -137,7 +137,7 @@
 <p>And register your own custom pattern generators with the API:</p>
 
 <div class="highlight highlight-csharp"><pre><span class="n">GeoPatterns</span><span class="p">.</span><span class="n">Register</span><span class="p">&lt;</span><span class="n">MyCustomPattern</span><span class="p">&gt;(</span><span class="s">"my_custom_pattern"</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GeoPatterns</span><span class="p">(</span><span class="s">"My Name"</span><span class="p">,</span> <span class="s">"my_custom_pattern"</span><span class="p">).</span><span class="n">UriImage</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GeoPatterns</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="s">"My Name"</span><span class="p">,</span> <span class="s">"my_custom_pattern"</span><span class="p">).</span><span class="n">UriImage</span><span class="p">();</span>
 <span class="c1">// ...</span>
 </pre></div>
 

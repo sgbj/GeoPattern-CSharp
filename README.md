@@ -63,7 +63,7 @@ And register your own custom pattern generators with the API:
 
 ```csharp
 GeoPatterns.Register<MyCustomPattern>("my_custom_pattern");
-var image = GeoPatterns("My Name", "my_custom_pattern").UriImage();
+var image = GeoPatterns.Generate("My Name", "my_custom_pattern").UriImage();
 // ...
 ```
 
